@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Behavioral Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        /* Correction pour éviter que le contenu ne soit caché derrière la barre de navigation fixe */
+        body {
+            padding-top: 70px; /* Ajustez cet espace selon la hauteur de la barre de navigation */
+        }
+        html {
+            scroll-padding-top: 70px; /* Correction pour que le défilement place la section en haut */
+        }
+        .full-page-section {
+            min-height: 100vh; /* La section occupe toute la hauteur de la fenêtre */
+            display: flex;
+            align-items: center; /* Centre le contenu verticalement */
+            justify-content: center; /* Centre le contenu horizontalement */
+        }
+        .hero-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+        .section-title {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .card-img-top {
+            width: 75%;             /* Largeur ajustée à 75% */
+            height: 300px;          /* Hauteur fixe */
+            object-fit: cover;      /* Recadre l'image pour couvrir l'espace */
+            object-position: top;   /* Assure que le haut de l'image est toujours visible */
+            display: block;         /* Nécessaire pour centrer l'image */
+            margin: 5px auto;         /* Centre horizontalement l'image */
+        }
+        .linkedin-logo {
+            width: 2em;  /* La largeur sera la même que la taille de la police de caractères de la ligne */
+            height: auto; /* Garde les proportions de l'image */
+            vertical-align: middle; /* Aligne verticalement l'image avec le texte */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar fixe -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="img/bp_logo.png" style="height: 50px; margin-right: 10px">The Behavioral Project</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#presentation">Présentation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projets">Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#equipe">Equipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="full-page-section hero-section">
+        <div class="container text-center">
+            <h1 class="hero-title">The Behavioral Project</h1>
+            <p class="hero-subtitle">La recherche en sciences comportementales au service de la société</p>
+            <img src="img/bp_logo.png" alt="Logo" style="height :300px" class="mt-4">
+        </div>
+    </section>
+
+    <!-- Présentation Section -->
+    <section id="presentation" class="full-page-section">
+        <div class="container">
+            <h2 class="section-title">Présentation</h2>
+            <h3 class="mb-3">
+                Un projet qui réunit des chercheurs en sciences comportementales et des organisations à la recherche de solutions pour changer des comportements.
+            </h3>
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header text-center bg-white">
+                            <img src="img/projet_0.jpg" alt="proj0" style="height: 100px">
+                        </div>
+                        <div class="card-body">
+                            <h5>Un audit comportemental pour identifier les freins et les facteurs facilitant</h5>
+                            <p>
+                                Nous utilisons des méthodes scientifiques (sciences économiques, psychologie, et autres sciences sociales) pour mener un audit comportemental afin d’identifier les motivations derrière les comportements à changer.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header text-center bg-white">
+                            <img src="img/projet_1.jpg" alt="proj1" style="height: 100px">
+                        </div>
+                        <div class="card-body">
+                            <h5>Une compréhension des comportements basée sur des données</h5>
+                            <p>
+                                Qu’il s’agisse de la phase d’exploration des motivations ou du test des solutions élaborées, notre méthode s’appuie sur des données issues d’expériences randomisées contrôlées, d’enquêtes, ou autres méthodes empiriques que nous complétons avec une approche qualitative.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header text-center bg-white">
+                            <img src="img/projet_2.jpg" alt="proj2" style="height: 100px">
+                        </div>
+                        <div class="card-body">
+                            <h5>Une approche basée sur une implication active de l’organisation partenaire</h5>
+                            <p>
+                                Nous privilégions une méthode de co-construction où l’organisation partenaire est impliquée de la phase d’exploration des motivations jusqu’à la mise en place d’une expérience contrôlée, en passant par le design des solutions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header text-center bg-white">
+                            <img src="img/projet_3.jpg" alt="proj3" style="height: 100px">
+                        </div>
+                        <div class="card-body">
+                            <h5>La méthode expérimentale pour tester l’impact immédiat et de long terme des solutions</h5>
+                            <p>
+                                Nous utilisons la méthode expérimentale pour tester l’impact de nos solutions. Expérimenter c’est provoquer une situation (implémenter une formation, introduire une incitation) et en observer les conséquences dans le groupe traité par rapport à un groupe témoin.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>
+                Le projet est animé par une équipe de chercheurs de MBS, PSB et du Centre d’économie de l’environnement de Montpellier, avec l’implication d’autres laboratoires de recherche en France. Un de nos projets récents a mobilisé <strong>35 chercheurs en économie comportementale</strong>.
+            </p>
+        </div>
+    </section>
+
+    <!-- Projets Section -->
+    <section id="projets" class="full-page-section">
+        <div class="container">
+            <h2 class="section-title">Une sélection de nos Projets</h2>
+            <div class="row">
+                <!-- Exemple de projet 1 -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <img src="img/projet_engie.png" alt="Projet Engie" style="float: right; height: 50px; border-radius: 50%">
+                            <h5 class="card-title">Le nudge au service de la sensibilisation énergétique</h5>
+                            <p class="card-text fst-italic fw-bold">Partenaire : ENGIE Impact</p>
+                            <p class="card-text">
+                                Dans le cadre d’une campagne de sensibilisation énergétique menée dans des lycées du programme éCOEPI, notre équipe a collaboré avec Engie Impact pour construire et évaluer l’impact de nudges qui visent à inciter les élèves à éteindre les PC après utilisation. <span class="fw-bold text-muted">Des nudges ont été installés dans un lycée (traité) et sa consommation d’électricité liée au poste informatique a été comparée à un lycée témoin.</span> Les résultats de cette expérience randomisée contrôlée ont montré une baisse significative de la consommation du poste informatique dans le lycée traité par rapport au lycée témoin.
+                            </p>
+                            <a href="https://ecoepi.centre-valdeloire.fr/2024/01/16/le-nudge-au-service-de-la-sensibilisation-energetique/" target="_blank" class="btn btn-primary" title="Voir le résumé du projet">Résumé du projet</a>
+                            <a href="https://hal.science/CEE-M/hal-04677585v1" target="_blank" class="btn btn-primary" title="Voir l'article scientifique issu de la collaboration">Article scientifique</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Exemple de projet 2 -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <img src="img/projet_fdj.png" alt="Projet FDJ" style="float: right; height: 50px; border-radius: 50%">
+                            <h5 class="card-title">Prévenir l’addiction aux jeux d’argent</h5>
+                            <p class="card-text fst-italic fw-bold">Partenaire : Française des Jeux</p>
+                            <p class="card-text">
+                                Notre équipe a travaillé avec la FDJ pour évaluer leurs campagnes et outils développés dans le but d’éduquer le regard des joueurs et les sensibiliser à leur pratique de jeu. Depuis 2020, nous avons mené deux expériences randomisées contrôlées, chacune impliquant <span class="text-muted fw-bold">plus de 4,000 joueurs de la FDJ</span>. Le mécanisme qui s’est avéré le plus efficace pour réduire la prise de risque est aussi le plus simple à mettre en place: offrir la possibilité aux joueurs de se fixer des limites. Notre équipe a également travaillé sur le test de différents outils qui permettent aux joueurs de se fixer une limite.
+                            </p>
+                            <a href="https://www.lemonde.fr/idees/article/2024/08/12/comment-les-operateurs-de-jeu-d-argent-rendent-inutiles-les-outils-de-prevention-de-l-addiction_6277388_3232.html" target="_blank" class="btn btn-primary" title="Un résumé de nos travaux les plus récents sur les outils de prévention">
+                            Article dans <span class="fst-italic">Le Monde</span></a>
+                            <a href="https://hal.inrae.fr/hal-04193948v1/document" target="_blank" class="btn btn-primary" title="Voir l'article scientifique issu de la collaboration">Article scientifique</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Exemple de projet 3 -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <img src="img/projet_vote.png" alt="Projet Vote" style="float: right; height: 50px; border-radius: 50%">
+                            <h5 class="card-title">Comment inciter les jeunes à voter</h5>
+                            <p class="card-text fst-italic fw-bold">Partenaire : Okoni</p>
+                            <p class="card-text">
+                                Au cours des trente dernières années, les sciences comportementales ont mis en avant de nombreuses solutions pour inciter à un changement comportemental (don d’organes, don de sang, transport, alimentation, etc.). Ces solutions sont encore peu appliquées dans le domaine de la participation citoyenne à des élections. Notre équipe a rassemblé 8 centres de recherche et plus de 30 chercheurs avec l’objectif de construire des solutions pour inciter les jeunes à voter lors des élections de 2022. Avec notre partenaire, Okoni, nous avons construit trois solutions, que nous avons ensuite testées avec une expérience randomisée contrôlée impliquant <span class="text-muted fw-bold">plus de 4000 jeunes</span>.
+                            </p>
+                            <a href="https://theconversation.com/comment-faire-pour-inciter-les-jeunes-a-voter-179245" target="_blank" class="btn btn-primary" title="Un résumé du projet">Article dans <span class="fst-italic">The Conversation</span></a>
+                            <a href="https://hal.inrae.fr/hal-04677596" target="_blank" class="btn btn-primary" title="Voir l'article scientifique issu de la collaboration">Article scientifique</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Exemple de projet 4 -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <img src="img/projet_vaccination.png" alt="Projet Vaccination" style="float: right; height: 50px; border-radius: 50%">
+                            <h5 class="card-title">Comment améliorer l’acceptabilité des vaccins contre le Covid-19</h5>
+                            <p class="card-text fst-italic fw-bold">Partenaire : Commission Européenne</p>
+                            <p class="card-text">
+                                Notre équipe a collaboré avec la Behavioural Unit de la Commission Européenne pour identifier les déterminants de la vaccination contre le Covid-19 et mettre en avant les solutions qui marchent pour inciter les gens à se faire vacciner. Nous avons passé en revue <span class="text-muted fw-bold">plus de 200 travaux scientifiques</span> pour identifier les solutions qui marchent (et celles qui ne marchent pas) pour encourager la vaccination.
+                            </p>
+                            <a href="https://publications.jrc.ec.europa.eu/repository/handle/JRC133066" target="_blank" class="btn btn-primary" title="Consulter le rapport publié par la Commission">Rapport de la <span class="fst-italic">Commission Européenne</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Exemple de projet 3 -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <img src="img/projet_orange.png" alt="Projet Orange" style="float: right; height: 50px; border-radius: 50%">
+                            <h5 class="card-title">Des nudges pour un numérique plus responsable</h5>
+                            <p class="card-text fst-italic fw-bold">Partenaire : Orange</p>
+                            <p class="card-text">
+                                Utiliser le réseau wifi génère jusqu’à 4 fois moins de CO2 que la 4G/5G. Pourtant, dans une expérience que nous avons mené, plus de 50% des répondants n’étaient pas au courant de cet impact. Les résultats de l’expérience contrôlée menée sur <span class="text-muted fw-bold">plus de 900 participants</span> ont montré qu’informer les gens n’a qu’un impact modéré sur leur comportement. Par contre, leur permettre de prendre un engagement personnel quant à l’utilisation du wifi, a eu un impact important sur les comportements à court et moyen terme.
+                            </p>
+                            <a href="https://hellofuture.orange.com/fr/des-nudges-pour-un-numerique-plus-responsable/" target="_blank" class="btn btn-primary" title="Un résumé du projet">Résumé du projet</a>
+                            <a href="https://www.dropbox.com/scl/fi/n9dowexms2jt3n5m6xgm1/V9.pdf?rlkey=mkzv5gcsxmkw0r4hv6vnd8vy9&dl=0" target="_blank" class="btn btn-primary" title="Voir l'article scientifique issu de la collaboration">Article scientifique</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Exemple de projet 6 -->
+                <div class="col-md-6">
+                    <!-- <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Comment améliorer l’acceptabilité des vaccins contre le Covid-19</h5>
+                            <p class="card-text fst-italic fw-bold">Partenaire : Commission Européenne</p>
+                            <p class="card-text">
+                                Notre équipe a collaboré avec la Behavioural Unit de la Commission Européenne pour identifier les déterminants de la vaccination contre le Covid-19 et mettre en avant les solutions qui marchent pour inciter les gens à se faire vacciner. Nous avons passé en revue <span class="text-muted fw-bold">plus de 200 travaux scientifiques</span> pour identifier les solutions qui marchent (et celles qui ne marchent pas) pour encourager la vaccination.
+                            </p>
+                            <a href="https://publications.jrc.ec.europa.eu/repository/handle/JRC133066" target="_blank" class="btn btn-primary" title="Consulter le rapport publié par la Commission">Rapport publié par la Commission</a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Equipe Section -->
+    <section id="equipe" class="full-page-section">
+        <div class="container">
+            <h2 class="section-title">L'équipe</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="img/Rustam_Romaniuc.jpg" class="card-img-top" alt="Rustam Romaniuc">
+                        <div class="card-body">
+                            <h5 class="card-title">Rustam Romaniuc</h5>
+                            <p class="card-text">
+                                Co-fondateur <span class="fst-italic">The Behavioral Project</span><br>
+                                Professeur associé Montpellier Business School<br>
+                                <a href="mailto:rustam.romaniuc@gmail.com">rustam.romaniuc@gmail.com</a><br>
+                                <a href="https://sites.google.com/site/rustamromaniuc/home" target="_blank"><i class="bi bi-globe"></i> Site web</a> |                                <a href="https://www.linkedin.com/in/rustam-romaniuc-5b9aa233/" target="_blank"><i class="bi bi-linkedin"></i> R. Romaniuc</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="img/Dimitri_Dubois.png" class="card-img-top" alt="Dimitri Dubois">
+                        <div class="card-body">
+                            <h5 class="card-title">Dimitri Dubois</h5>
+                            <p class="card-text">
+                                Co-fondateur <span class="fst-italic">The Behavioral Project</span><br>
+                                Ingénieur de recherche CNRS<br>
+                                <a href="mailto:dimitri.dubois@umontpellier.fr">dimitri.dubois@umontpellier.fr</a> <br>
+                                <a href="https://www.duboishome.info/dimitri/" target="_blank"><i class="bi bi-globe"></i> Site web</a> |                                <a href="https://www.linkedin.com/in/dimitridubois/" target="_blank"><i class="bi bi-linkedin"></i> D. Dubois</a>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="img/Andrea_Guido.jpg" class="card-img-top" alt="Andrea Guido">
+                        <div class="card-body">
+                            <h5 class="card-title">Andrea Guido</h5>
+                            <p class="card-text">
+                                Co-fondateur <span class="fst-italic">The Behavioral Project</span><br>
+                                Professeur associé Paris School of Business<br>
+                                <a href="mailto:a.guido@psbedu.paris">a.guido@psbedu.paris</a> <br>
+                                <a href="https://sites.google.com/site/andreaguidouni/home" target="_blank"><i class="bi bi-globe"></i> Site web</a> |                                <a href="https://www.linkedin.com/in/andrea-guido-709583216/" target="_blank"><i class="bi bi-linkedin"></i> A. Guido</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- seconde ligne de membres -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="img/Ema_Hommel.jpg" class="card-img-top" alt="Ema Hommel">
+                        <div class="card-body">
+                            <h5 class="card-title">Ema Hommel</h5>
+                            <p class="card-text">
+                                Assistante de recherche <span class="fst-italic">The Behavioral Project</span><br>
+                                Etudiante du Master Economie & Psychologie<br>
+                                <a href="mailto:hommelema@gmail.com">hommelema@gmail.com</a><br>
+                                <a href="https://www.linkedin.com/in/ema-hommel-837ab4263/" target="_blank"><i class="bi bi-linkedin"></i> E. Hommel</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="img/Odile_SereDeLanauze.jpg" class="card-img-top" alt="Odile Séré de Lanauze">
+                        <div class="card-body">
+                            <h5 class="card-title">Odile Séré de Lanauze</h5>
+                            <p class="card-text">
+                                Assistante de recherche <span class="fst-italic">The Behavioral Project</span><br>
+                                Doctorante BIT Paris<br>
+                                <a href="mailto:odiledelanauze@gmail.com">odiledelanauze@gmail.com</a> <br>
+                                <a href="https://www.linkedin.com/in/odile-s%C3%A9r%C3%A9-de-lanauze-034b33207/" target="_blank"><i class="bi bi-linkedin"></i> O. Séré de Lanauze</a>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <!-- <div class="card mb-4">
+                        <img src="img/Andrea_Guido.jpg" class="card-img-top" alt="Andrea Guido">
+                        <div class="card-body">
+                            <h5 class="card-title">Andrea Guido</h5>
+                            <p class="card-text">
+                                Co-fondateur <span class="fst-italic">The Behavioral Project</span><br>
+                                Professeur associé Paris School of Business<br>
+                                <a href="mailto:a.guido@psbedu.paris">a.guido@psbedu.paris</a> <br>
+                                <a href="https://sites.google.com/site/andreaguidouni/home" target="_blank"><i class="bi bi-globe"></i> Site web</a> |                                <a href="https://www.linkedin.com/in/andrea-guido-709583216/" target="_blank"><i class="bi bi-linkedin"></i> A. Guido</a>
+                            </p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="full-page-section">
+        <div class="container text-center">
+            <h2 class="section-title">Contact</h2>
+            <h3 class="mb-3">The Behavioral Project <img src="img/bp_logo.png" alt="The Behavioral Project" style="height: 50px"></h3>
+            <p>
+                N'hésitez pas à nous contacter pour un projet, une étude, un devis ... <br>
+                <a href="mailto:contact@Behavioralproject.org">contact@Behavioralproject.org</a>
+            </p>
+            <p class="mt-5">
+                Vous pouvez nous suivre sur
+                <a href="https://www.linkedin.com/company/behavior-solutions-for-good/"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            </p>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
