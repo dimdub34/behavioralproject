@@ -1,3 +1,3 @@
 # behavioralproject
 
-Site web du collectif de recherche *The Behavioral Project".
+Site web du collectif de recherche *The Behavioral Project*.
