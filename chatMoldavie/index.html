@@ -21,11 +21,12 @@
     <div class=" card bg-light mb-3">
         <div class="card-body">
             <p>
-                To get started, please select the topic you'd like to explore:
+                Please select the topic you'd like to explore:
             </p>
             <div id="topic" class="mb-3"></div>
             <div id="questions" class="mb-3"></div>
-            <div id="response" class="mb-3"></div>
+            <div id="response" class="mb-1"></div>
+            <div id="summary" class="mb-3"></div>
         </div>
     </div>
 </div>
@@ -37,6 +38,13 @@
 
     function capitalize(word) {
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }
+
+    function clear_container(container) {
+        container.innerHTML = "";
+        container.classList.remove("chat-bubble", "bot-bubble");
+        if (container === document.querySelector("#summary"))
+            container.classList.remove("border");
     }
 
     function ask_topic() {
@@ -73,9 +81,8 @@
     function display_questions(topic) {
         const container = document.querySelector('#questions');
         container.innerHTML = '';
-
-        const reponse = document.querySelector('#response');
-        reponse.innerHTML = '';
+        clear_container(document.querySelector('#response'));
+        clear_container(document.querySelector('#summary'));
 
         const paragraph = document.createElement('p');
         paragraph.textContent = "Please select a question.";
@@ -84,7 +91,7 @@
         const questions = data[topic];
         questions.forEach(question => {
             const btn_question = document.createElement('button');
-            btn_question.classList.add('btn', 'btn-outline-secondary', 'mx-1');
+            btn_question.classList.add('btn', 'btn-outline-secondary', 'mx-1', 'my-1');
             btn_question.type = 'button';
             btn_question.innerHTML = `<i class="bi bi-patch-question"></i> ${capitalize(question.question)}`;
 
@@ -102,34 +109,43 @@
             });
 
             container.appendChild(btn_question);
+            container.appendChild(document.createElement('br'));
         });
     }
 
     function display_response(topic, question) {
         const container = document.querySelector('#response');
-        container.innerHTML = ''; // Réinitialise le conteneur
-
+        container.classList.add("chat-bubble", "bot-bubble");
+        clear_container(document.querySelector('#summary'));
         const questionObj = data[topic].find(item => item === question);
-        if (questionObj) {
-            // Crée une bulle pour la réponse du bot
-            const botBubble = document.createElement('div');
-            botBubble.classList.add('chat-bubble', 'bot-bubble');
-            container.appendChild(botBubble);
+        const formattedResponse = questionObj.reponse.replace(/\n/g, '<br>');
+        const typewriter = new Typewriter(container, {
+            loop: false,
+            delay: 10,
+            cursor: null // Supprime le curseur
+        });
+        typewriter
+            .typeString(formattedResponse)
+            .callFunction(() => {
+                // Appelle display_summary une fois que l'effet est terminé
+                display_summary(questionObj);
+            })
+            .start();
+    }
 
-            // Ajoute l'effet de frappe
-            const typewriter = new Typewriter(botBubble, {
-                loop: false,
-                delay: 25,
-                cursor: null // Supprime le curseur
-            });
-            typewriter.typeString(questionObj.reponse).start();
-
-        } else {
-            const errorBubble = document.createElement('div');
-            errorBubble.classList.add('chat-bubble', 'bot-bubble');
-            errorBubble.textContent = "Réponse introuvable pour la question spécifiée.";
-            container.appendChild(errorBubble);
-        }
+    function display_summary(question) {
+        const container = document.querySelector('#summary');
+        container.classList.add('chat-bubble', 'bot-bubble', 'border', 'border-1', 'border-primary')
+        const formattedResponse = question.summary.replace(/\n/g, '<br>');
+        const typewriter = new Typewriter(container, {
+            loop: false,
+            delay: 10,
+            cursor: null // Supprime le curseur
+        });
+        typewriter
+            .typeString("<b>Summary</b> <br/>")
+            .typeString(formattedResponse)
+            .start();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
