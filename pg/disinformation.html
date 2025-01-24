@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <main>
+        <header>
+            <img src="../img/expertgrup.svg" alt="Logo Expert-Grup" style="float: left; width: 150px;">
+        </header>
+
+        <div>
+            <script src='https://cdn.botpress.cloud/webchat/v2.2/inject.js'></script>
+            <style>
+                .bpWebchat {
+                    position: fixed !important;
+                    /* Fix it to the screen */
+                    top: 50% !important;
+                    /* Center vertically */
+                    left: 50% !important;
+                    /* Center horizontally */
+                    transform: translate(-50%, -50%) !important;
+                    /* Offset for centering */
+                    width: 90% !important;
+                    /* Make it responsive: occupies 90% of the screen width */
+                    max-width: 900px !important;
+                    /* Set a max width to avoid oversized chat windows */
+                    height: 80% !important;
+                    /* Make it responsive: occupies 80% of the screen height */
+                    max-height: 1000px !important;
+                    /* Set a max height */
+                    z-index: 9999;
+                    /* Ensure it stays on top of other elements */
+                }
+
+                @media (max-width: 768px) {
+                    .bpWebchat {
+                        width: 100% !important;
+                        /* Full width on smaller screens */
+                        height: 100% !important;
+                        /* Full height */
+                    }
+                }
+            </style>
+            <script src='https://files.bpcontent.cloud/2024/11/06/11/20241106110824-RPNCQUWJ.js'></script>
+        </div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                botpress.open();
+                document.querySelector(".bpFab").style.display = "none";
+            }, 2000);
+        })
+    </script>
+</body>
+
+</html>

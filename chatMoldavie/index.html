@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="typewriter/typewriter.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-3">Welcome to Europa Explicată!</h1>
+    <p>
+        I’m here to help you better understand what Moldova’s integration into the European Union means! <br/>
+        Learn about the advantages, risks, and opportunities of this process, using clear information and reliable
+        sources. Together, we’re building an informed future!
+    </p>
+
+    <div class=" card bg-light mb-3">
+        <div class="card-body">
+            <p>
+                To get started, please select the topic you'd like to explore:
+            </p>
+            <div id="topic" class="mb-3"></div>
+            <div id="questions" class="mb-3"></div>
+            <div id="response" class="mb-3"></div>
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap.js"></script>
+<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+<script src="data.js"></script>
+<script>
+
+    function capitalize(word) {
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }
+
+    function ask_topic() {
+        const container = document.querySelector('#topic');
+
+        // récupération des topics
+        let topics = Object.keys(data);
+        // Ajoute un bouton pour chaque topic
+        topics.forEach(topic => {
+            const button = document.createElement('button');
+            button.classList.add('btn', 'btn-outline-secondary', 'mx-1');
+            button.type = 'button';
+            button.innerHTML = `<i class="bi bi-chat"></i> ${capitalize(topic)}`;
+
+            // effet sélection / déselection
+            button.addEventListener('click', () => {
+                const buttons = container.querySelectorAll('button');
+                buttons.forEach(btn => {
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-outline-secondary');
+                });
+                button.classList.remove('btn-outline-secondary');
+                button.classList.add('btn-primary');
+
+                // Afficher les questions
+                display_questions(topic);
+            });
+
+            container.appendChild(button);
+        });
+    }
+
+
+    function display_questions(topic) {
+        const container = document.querySelector('#questions');
+        container.innerHTML = '';
+
+        const reponse = document.querySelector('#response');
+        reponse.innerHTML = '';
+
+        const paragraph = document.createElement('p');
+        paragraph.textContent = "Please select a question.";
+        container.appendChild(paragraph);
+
+        const questions = data[topic];
+        questions.forEach(question => {
+            const btn_question = document.createElement('button');
+            btn_question.classList.add('btn', 'btn-outline-secondary', 'mx-1');
+            btn_question.type = 'button';
+            btn_question.innerHTML = `<i class="bi bi-patch-question"></i> ${capitalize(question.question)}`;
+
+            // effet sélection / déselection
+            btn_question.addEventListener('click', () => {
+                const buttons = container.querySelectorAll('button');
+                buttons.forEach(btn => {
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-outline-secondary');
+                });
+                btn_question.classList.remove('btn-outline-secondary');
+                btn_question.classList.add('btn-primary');
+
+                display_response(topic, question);
+            });
+
+            container.appendChild(btn_question);
+        });
+    }
+
+    function display_response(topic, question) {
+        const container = document.querySelector('#response');
+        container.innerHTML = ''; // Réinitialise le conteneur
+
+        const questionObj = data[topic].find(item => item === question);
+        if (questionObj) {
+            // Crée une bulle pour la réponse du bot
+            const botBubble = document.createElement('div');
+            botBubble.classList.add('chat-bubble', 'bot-bubble');
+            container.appendChild(botBubble);
+
+            // Ajoute l'effet de frappe
+            const typewriter = new Typewriter(botBubble, {
+                loop: false,
+                delay: 25,
+                cursor: null // Supprime le curseur
+            });
+            typewriter.typeString(questionObj.reponse).start();
+
+        } else {
+            const errorBubble = document.createElement('div');
+            errorBubble.classList.add('chat-bubble', 'bot-bubble');
+            errorBubble.textContent = "Réponse introuvable pour la question spécifiée.";
+            container.appendChild(errorBubble);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        ask_topic();
+    });
+
+</script>
+</body>
+</html>
