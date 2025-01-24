@@ -35,6 +35,8 @@
 <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 <script src="data.js"></script>
 <script>
+    let typewriter_response = null;
+    let typewriter_summary = null;
 
     function capitalize(word) {
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
@@ -43,8 +45,18 @@
     function clear_container(container) {
         container.innerHTML = "";
         container.classList.remove("chat-bubble", "bot-bubble");
-        if (container === document.querySelector("#summary"))
+        if (container === document.querySelector("#summary")) {
             container.classList.remove("border");
+            if (typewriter_summary) {
+                typewriter_summary.stop();
+                typewriter_summary = null;
+            }
+        } else if (container === document.querySelector("#response")) {
+            if (typewriter_response) {
+                typewriter_response.stop();
+                typewriter_response = null;
+            }
+        }
     }
 
     function ask_topic() {
@@ -119,12 +131,16 @@
         clear_container(document.querySelector('#summary'));
         const questionObj = data[topic].find(item => item === question);
         const formattedResponse = questionObj.reponse.replace(/\n/g, '<br>');
-        const typewriter = new Typewriter(container, {
+
+        if (typewriter_response) {
+            typewriter_response.stop();
+        }
+        typewriter_response = new Typewriter(container, {
             loop: false,
             delay: 10,
             cursor: null // Supprime le curseur
         });
-        typewriter
+        typewriter_response
             .typeString(formattedResponse)
             .callFunction(() => {
                 // Appelle display_summary une fois que l'effet est terminé
@@ -137,12 +153,16 @@
         const container = document.querySelector('#summary');
         container.classList.add('chat-bubble', 'bot-bubble', 'border', 'border-1', 'border-primary')
         const formattedResponse = question.summary.replace(/\n/g, '<br>');
-        const typewriter = new Typewriter(container, {
+
+        if (typewriter_summary) {
+            typewriter_summary.stop();
+        }
+        typewriter_summary = new Typewriter(container, {
             loop: false,
             delay: 10,
             cursor: null // Supprime le curseur
         });
-        typewriter
+        typewriter_summary
             .typeString("<b>Summary</b> <br/>")
             .typeString(formattedResponse)
             .start();
