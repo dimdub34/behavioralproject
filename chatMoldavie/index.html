@@ -31,6 +31,19 @@
     </div>
 </div>
 
+<div class="rating-container text-center mt-5 mb-5" style="display: none">
+    <p>How would you rate this chatbot?</p>
+    <div id="rating" class="rating">
+        <i class="bi bi-star" data-value="1"></i>
+        <i class="bi bi-star" data-value="2"></i>
+        <i class="bi bi-star" data-value="3"></i>
+        <i class="bi bi-star" data-value="4"></i>
+        <i class="bi bi-star" data-value="5"></i>
+    </div>
+    <p id="rating-value" class="mt-3"></p>
+</div>
+
+
 <script src="js/bootstrap.js"></script>
 <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 <script src="data.js"></script>
@@ -40,6 +53,10 @@
 
     function capitalize(word) {
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }
+
+    function display_rating() {
+        document.querySelector(".rating-container").style.display = "block";
     }
 
     function clear_container(container) {
@@ -165,11 +182,61 @@
         typewriter_summary
             .typeString("<b>Summary</b> <br/>")
             .typeString(formattedResponse)
+            .callFunction(() => {
+                display_rating();
+            })
             .start();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
         ask_topic();
+
+        const stars = document.querySelectorAll('#rating .bi'); // Sélectionne les étoiles
+        const ratingValueDisplay = document.getElementById('rating-value'); // Affiche la note sélectionnée
+
+        let currentRating = 0; // Stocke la note sélectionnée
+
+        stars.forEach(star => {
+            // Survol : Change les couleurs des étoiles temporairement
+            star.addEventListener('mouseover', () => {
+                resetStars(); // Réinitialise toutes les étoiles
+                highlightStars(star.dataset.value); // Met en surbrillance les étoiles jusqu'à celle survolée
+            });
+
+            // Quitter le survol : Restaurer les étoiles sélectionnées
+            star.addEventListener('mouseout', () => {
+                resetStars();
+                highlightStars(currentRating); // Remet en surbrillance les étoiles sélectionnées
+            });
+
+            // Clic : Enregistre la note sélectionnée
+            star.addEventListener('click', () => {
+                currentRating = star.dataset.value; // Enregistre la note
+                ratingValueDisplay.textContent = `You rated this ${currentRating} star(s).`; // Affiche la note
+                resetStars(); // Réinitialise toutes les étoiles
+                highlightStars(currentRating, true); // Met en surbrillance les étoiles sélectionnées
+            });
+        });
+
+        // Réinitialise toutes les étoiles
+        function resetStars() {
+            stars.forEach(star => {
+                star.classList.remove('filled'); // Supprime l'état "rempli"
+                star.classList.replace('bi-star-fill', 'bi-star'); // Remet l'étoile en mode vide
+            });
+        }
+
+        // Met en surbrillance les étoiles jusqu'à la valeur donnée
+        function highlightStars(value, makePermanent = false) {
+            stars.forEach(star => {
+                if (star.dataset.value <= value) {
+                    if (makePermanent) {
+                        star.classList.add('filled'); // Ajoute l'état "rempli"
+                    }
+                    star.classList.replace('bi-star', 'bi-star-fill'); // Change l'icône en étoile pleine
+                }
+            });
+        }
     });
 
 </script>

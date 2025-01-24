@@ -21,3 +21,29 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+
+/* rating container */
+.rating {
+    display: inline-flex;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.rating .bi {
+    color: #ccc; /* Couleur des étoiles non sélectionnées */
+    transition: color 0.3s;
+}
+
+.rating .bi.selected {
+    color: #f5c518; /* Couleur des étoiles sélectionnées */
+}
+
+.rating .bi:hover,
+.rating .bi:hover .bi {
+    color: #f5c518; /* Couleur des étoiles au survol */
+}
+
+.rating .bi.filled {
+    color: #f5c518; /* Couleur des étoiles sélectionnées */
+}
