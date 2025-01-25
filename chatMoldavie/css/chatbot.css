@@ -1,9 +1,18 @@
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto', sans-serif;
+    background: linear-gradient(180deg, #f0f8ff, #ffffff);
+}
+
+.container {
+    min-height: 100vh; /* vh = 1% de la hauteur de la fenêtre */
+    display: flex; /* Optionnel : Pour centrer verticalement */
+    flex-direction: column; /* Optionnel : Pour aligner les éléments en colonne */
 }
 
 .chat-bubble {
-    max-width: 90%;
     padding: 10px 15px;
     margin: 10px 0;
     border-radius: 15px;
@@ -11,8 +20,10 @@ body {
 }
 
 .bot-bubble {
-    background-color: #e9ecef;
-    color: #333;
+    /*background-color: #e9ecef;*/
+    /*color: #333;*/
+    background-color: #0057a8;
+    color: #fff;
     text-align: left;
     align-self: flex-start;
 }
@@ -20,6 +31,25 @@ body {
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline-secondary {
+    border-color: #ffd700;
+    color: #0057a8;
+}
+.btn-outline-secondary:hover {
+    background-color: #ffd700;
+    color: #0057a8;
+}
+
+.btn-primary {
+    background: #0057a8;
+    color: #ffd700;
+}
+
+/* summary */
+.summary {
+    border: 1px solid #ffd700;
 }
 
 /* rating container */
