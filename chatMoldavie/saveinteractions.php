@@ -12,13 +12,13 @@ $allowed_domains = [
 
 // Récupérer le domaine de l'origine de la requête
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+console.log($origin);
 
 // Vérifier si le domaine est autorisé
 if (in_array($origin, $allowed_domains)) {
     header("Access-Control-Allow-Origin: $origin");
-    header("Access-Control-Allow-Methods: POST, OPTIONS");
-    header("Access-Control-Allow-Headers: Content-Type");
-    header("Access-Control-Allow-Credentials: true"); // Si tu veux permettre les cookies, tokens, etc.
+    header("Access-Control-Allow-Methods: POST");
+    header("Content-Type: application/json");
 } else {
     // Si l'origine n'est pas autorisée, retourner un code 403 (non autorisé)
     http_response_code(403);
