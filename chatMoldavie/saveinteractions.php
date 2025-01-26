@@ -7,7 +7,7 @@
 // Liste des domaines autorisés
 $allowed_domains = [
     "https://www.behavioralproject.org",
-    "https://dimdub34.github.io/",
+    "https://dimdub34.github.io",
 ];
 
 // Récupérer le domaine de l'origine de la requête
