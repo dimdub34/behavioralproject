@@ -34,9 +34,11 @@ html, body {
 }
 
 .btn-outline-secondary {
-    border-color: #ffd700;
+    /*border-color: #ffd700;*/
+    border: 0;
     color: #0057a8;
 }
+
 .btn-outline-secondary:hover {
     background-color: #ffd700;
     color: #0057a8;
@@ -47,9 +49,15 @@ html, body {
     color: #ffd700;
 }
 
+.btn-primary:hover {
+    background: #0057a8;
+    color: #ffd700;
+}
+
 /* summary */
 .summary {
-    border: 1px solid #ffd700;
+    /*border: 2px solid #ffd700;*/
+    color: #ffd700;
 }
 
 /* rating container */
