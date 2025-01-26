@@ -110,7 +110,6 @@
         });
     }
 
-
     function display_questions(topic) {
         const container = document.querySelector('#questions');
         container.innerHTML = '';
@@ -153,6 +152,9 @@
         const questionObj = data[topic].find(item => item === question);
         const formattedResponse = questionObj.reponse.replace(/\n/g, '<br>');
 
+        // Envoie les données de l'interaction au serveur
+        saveInteraction(topic, question.question);
+
         if (typewriter_response) {
             typewriter_response.stop();
         }
@@ -190,6 +192,35 @@
                 display_rating();
             })
             .start();
+    }
+
+    function saveInteraction(topic, question) {
+        const interactionData = {
+            topic: topic,
+            question: question,
+            timestamp: new Date().toISOString() // Ajoute un horodatage
+        };
+
+        fetch('https://www.behavioralproject.org/chatMoldavie/saveinteractions.php', { // Remplace par l'URL de ton fichier PHP
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(interactionData) // Convertit les données en JSON
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur lors de l\'enregistrement de l\'interaction.');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log('Interaction sauvegardée avec succès :', interactionData);
+                console.log('Réponse du serveur :', data);
+            })
+            .catch(error => {
+                console.error('Erreur :', error);
+            });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
