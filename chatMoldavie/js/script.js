@@ -135,8 +135,13 @@ function display_summary(question) {
         delay: 10,
         cursor: null // Supprime le curseur
     });
+    let title_summary;
+    if (language === "en")
+        title_summary = "Summary";
+    else if (language === "ro")
+        title_summary = "Rezumat";
     typewriter_summary
-        .typeString("<b>Summary</b> <br/>")
+        .typeString(`<b>${title_summary}</b> <br/>`)
         .typeString(formattedResponse)
         .callFunction(() => {
             display_rating();
