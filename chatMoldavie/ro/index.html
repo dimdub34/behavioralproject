@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Expert-Grup - Chabot - Europe integration</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="typewriter/typewriter.css">
-    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="../typewriter/typewriter.css">
+    <link rel="stylesheet" href="../css/chatbot.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5 p-3">
     <header class="mb-3">
-        <img src="img/expertgrup.svg" alt="logo" style="float: right;">
-        <h1 class="fs-2">Welcome to European.md <img src="img/europe.png" style="height: 1em; border-radius: 5px"></h1>
-        <h2 class="fs-3 mb-3">A chatbot about the Republic of Moldova's EU integration</h2>
+        <img src="../img/expertgrup.svg" alt="logo" style="float: right;">
+        <h1 class="fs-2">Bine ai venit pe European.md <img src="../img/europe.png" style="height: 1em; border-radius: 5px">
+        </h1>
+        <h2 class="fs-3 mb-3">Chatbot-ul care te ajută să fii informat corect despre integrarea europeană a Republicii
+            Moldova!</h2>
         <p>
-            I’m here to help you better understand what Moldova’s integration into the European Union means! <br/>
-            Learn about the advantages, risks, and opportunities of this process, using clear information and
-            reliable sources. Together, we’re building an informed future!
+            Sunt aici pentru a te ajuta să înțelegi mai bine ce înseamnă integrarea Moldovei în Uniunea Europeană.
+            Află despre avantajele, riscurile și oportunitățile acestui proces, folosind informații clare și surse de
+            încredere. Împreună, construim un viitor informat!
         </p>
     </header>
     <div class="card bg-white mb-3">
         <div class="card-body">
             <p>
-                Please select the topic you'd like to explore:
+                Pentru a începe, alege una dintre cele trei teme principale de discuție:
             </p>
             <div id="topic" class="mb-3"></div>
             <div id="questions" class="mb-3"></div>
@@ -33,7 +35,7 @@
         </div>
     </div>
     <div class="rating-container text-center mt-5 mb-5" style="display: none">
-        <p>How would you rate this chatbot?</p>
+        <p>Cum ați evalua acest chatbot?</p>
         <div id="rating" class="rating">
             <i class="bi bi-star" data-value="1"></i>
             <i class="bi bi-star" data-value="2"></i>
@@ -46,14 +48,14 @@
 
 </div>
 
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
-<script src="js/script.js"></script>
 <script src="data.js"></script>
+<script src="../js/script.js"></script>
 <script>
-    const language = "en";
+    const language = "ro";
 
-    document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
         ask_topic();
         config_stars();
     });
