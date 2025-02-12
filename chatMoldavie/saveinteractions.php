@@ -9,6 +9,7 @@ $allowed_domains = [
     "https://www.behavioralproject.org",
     "https://www.european.md/",
     "https://dimdub34.github.io",
+    "https://github.io"
 ];
 
 // Récupérer le domaine de l'origine de la requête
