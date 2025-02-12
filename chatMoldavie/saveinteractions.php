@@ -13,7 +13,10 @@ $allowed_domains = [
 ];
 
 // Récupérer le domaine de l'origine de la requête
-$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+$origin = $_SERVER['HTTP_ORIGIN'] ?? 'null';
+
+echo "<script>console.log('HTTP_ORIGIN: " . addslashes($origin) . "');</script>";
+
 
 // Vérifier si le domaine est autorisé
 if (in_array($origin, $allowed_domains)) {
