@@ -1,4 +1,5 @@
 <?php
+
 // // Définir l'en-tête pour permettre les requêtes CORS (si nécessaire)
 // header('Access-Control-Allow-Origin: http://www.behavioralproject.org');
 // header('Access-Control-Allow-Methods: POST');
@@ -15,8 +16,12 @@ $allowed_domains = [
 // Récupérer le domaine de l'origine de la requête
 $origin = $_SERVER['HTTP_ORIGIN'] ?? 'null';
 
-echo "<script>console.log('HTTP_ORIGIN: " . addslashes($origin) . "');</script>";
-
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header("Access-Control-Allow-Origin: $origin");
+    header("Access-Control-Allow-Methods: POST, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
+    exit; // Réponse vide pour éviter l'exécution du reste du script
+}
 
 // Vérifier si le domaine est autorisé
 if (in_array($origin, $allowed_domains)) {
