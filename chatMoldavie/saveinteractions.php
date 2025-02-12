@@ -7,6 +7,7 @@
 // Liste des domaines autorisés
 $allowed_domains = [
     "https://www.behavioralproject.org",
+    "https://www.european.md/",
     "https://dimdub34.github.io",
 ];
 
