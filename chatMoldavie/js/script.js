@@ -267,6 +267,8 @@ async function sendMessage() {
         }
 
         chatBox.innerHTML += `<div><strong>ChatBot :</strong> ${data.reply}</div>`;
+        // Sauvegarder la question et la réponse dans chatbot.log
+        saveChatbotInteraction(userMessage, data.reply);
 
         if (userPrompts >= maxPrompts) {
             input.disabled = true;
@@ -280,4 +282,20 @@ async function sendMessage() {
     } catch (error) {
         chatBox.innerHTML += `<div style="color:red;">Error : ${error.message}</div>`;
     }
+}
+
+function saveChatbotInteraction(question, answer) {
+    const chatData = {
+        question: question,
+        answer: answer
+    };
+
+    fetch('https://www.behavioralproject.org/chatMoldavie/savechatbot.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(chatData)
+    })
+    .then(response => response.json())
+    .then(data => console.log('ChatBot interaction saved:', data))
+    .catch(error => console.error('Error saving chatbot interaction:', error));
 }
