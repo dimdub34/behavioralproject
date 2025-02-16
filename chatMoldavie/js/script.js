@@ -203,7 +203,11 @@ function config_stars() {
         // Clic : Enregistre la note sélectionnée
         star.addEventListener('click', () => {
             currentRating = star.dataset.value; // Enregistre la note
-            ratingValueDisplay.textContent = `You rated this ${currentRating} star(s).`; // Affiche la note
+            // affiche la note
+            if (language === "en")
+                ratingValueDisplay.textContent = `You rated this ${currentRating} star(s).`;
+            else if (language === "ro")
+                ratingValueDisplay.textContent = `Ai evaluat acest lucru cu ${currentRating} ${currentRating === 1 ? 'stea' : 'stele'}.`;
             resetStars(); // Réinitialise toutes les étoiles
             highlightStars(currentRating, true); // Met en surbrillance les étoiles sélectionnées
         });
@@ -240,7 +244,13 @@ async function sendMessage() {
     const userMessage = input.value.trim();
     if (!userMessage) return;
 
-    chatBox.innerHTML += `<div><strong>You :</strong> ${userMessage}</div>`;
+    let pers;
+    if (language === "en") {
+        pers = "You";
+    } else if (language === "ro") {
+        pers = "Dumneavoastră";
+    }
+    chatBox.innerHTML += `<div><strong>${pers} :</strong> ${userMessage}</div>`;
     input.value = "";
     userPrompts++;
 
@@ -256,15 +266,18 @@ async function sendMessage() {
             throw new Error(data.error);
         }
 
-        chatBox.innerHTML += `<div><strong>ChatGPT :</strong> ${data.reply}</div>`;
+        chatBox.innerHTML += `<div><strong>ChatBot :</strong> ${data.reply}</div>`;
 
         if (userPrompts >= maxPrompts) {
             input.disabled = true;
             sendButton.disabled = true;
-            chatBox.innerHTML += `<div style="color:red;">Limite atteinte : vous ne pouvez plus envoyer de messages.</div>`;
+            if (language === "en")
+                chatBox.innerHTML += `<div style="color:red;">Limit reached: you can’t send any more messages.</div>`;
+            else if (language === "ro")
+                chatBox.innerHTML += `<div style="color:red;">Limită atinsă: nu mai poți trimite mesaje.</div>`;
         }
 
     } catch (error) {
-        chatBox.innerHTML += `<div style="color:red;">Erreur : ${error.message}</div>`;
+        chatBox.innerHTML += `<div style="color:red;">Error : ${error.message}</div>`;
     }
 }
