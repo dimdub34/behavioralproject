@@ -12,7 +12,6 @@
 <body>
 <div class="container mt-5 p-3">
     <header class="mb-3">
-        <!--<img src="img/expertgrup.svg" alt="logo" style="float: right;">-->
         <h1 class="fs-2">Welcome to European.md <img src="img/europe.png" style="height: 1em; border-radius: 5px"></h1>
         <h2 class="fs-3 mb-3">A chatbot about the Republic of Moldova's EU integration</h2>
         <p>
@@ -24,7 +23,7 @@
     <div class="card bg-white mb-3">
         <div class="card-body">
             <p>
-                Please select the topic you'd like to explore:
+                Please select the topic you'd like to explore.
             </p>
             <div id="topic" class="mb-3"></div>
             <div id="questions" class="mb-3"></div>
@@ -32,6 +31,21 @@
             <div id="summary" class="mb-3"></div>
         </div>
     </div>
+
+    <div class=" card bg-white mb-3">
+        <div class="card-body">
+            <p>
+                Or ask your own question in the chat box below. <br/>
+                <span class="fst-italic small">
+            Please note that each user is limited to two open-ended questions.
+        </span>
+            </p>
+            <div id="chatBox"></div>
+            <input id="userInput" type="text" placeholder="Please ask your question ..." class="form-control mb-2">
+            <button id="sendButton" class="btn btn-secondary" type="button" onclick="sendMessage()"><img src="img/send.svg">&nbsp;Send</button>
+        </div>
+    </div>
+
     <div class="rating-container text-center mt-5 mb-5" style="display: none">
         <p>How would you rate this chatbot?</p>
         <div id="rating" class="rating">

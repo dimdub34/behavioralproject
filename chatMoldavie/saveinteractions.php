@@ -1,16 +1,8 @@
 <?php
 
-// // Définir l'en-tête pour permettre les requêtes CORS (si nécessaire)
-// header('Access-Control-Allow-Origin: http://www.behavioralproject.org');
-// header('Access-Control-Allow-Methods: POST');
-// header('Content-Type: application/json');
-
 // Liste des domaines autorisés
 $allowed_domains = [
-    "https://www.behavioralproject.org",
-    "https://www.european.md/",
     "https://dimdub34.github.io",
-    "https://github.io"
 ];
 
 // Récupérer le domaine de l'origine de la requête

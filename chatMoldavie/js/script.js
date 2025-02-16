@@ -1,5 +1,8 @@
 let typewriter_response = null;
 let typewriter_summary = null;
+/* for chatGPT */
+let userPrompts = 0;
+const maxPrompts = 2;
 
 
 function capitalize(word) {
@@ -224,5 +227,44 @@ function config_stars() {
                 star.classList.replace('bi-star', 'bi-star-fill'); // Change l'icône en étoile pleine
             }
         });
+    }
+}
+
+async function sendMessage() {
+    const input = document.getElementById("userInput");
+    const chatBox = document.getElementById("chatBox");
+    const sendButton = document.getElementById("sendButton");
+
+    if (userPrompts >= maxPrompts) return;
+
+    const userMessage = input.value.trim();
+    if (!userMessage) return;
+
+    chatBox.innerHTML += `<div><strong>You :</strong> ${userMessage}</div>`;
+    input.value = "";
+    userPrompts++;
+
+    try {
+        const response = await fetch("https://www.behavioralproject.org/chatMoldavie/chat.php", { // Mets l'URL de ton hébergement OVH
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({message: userMessage})
+        });
+
+        const data = await response.json();
+        if (data.error) {
+            throw new Error(data.error);
+        }
+
+        chatBox.innerHTML += `<div><strong>ChatGPT :</strong> ${data.reply}</div>`;
+
+        if (userPrompts >= maxPrompts) {
+            input.disabled = true;
+            sendButton.disabled = true;
+            chatBox.innerHTML += `<div style="color:red;">Limite atteinte : vous ne pouvez plus envoyer de messages.</div>`;
+        }
+
+    } catch (error) {
+        chatBox.innerHTML += `<div style="color:red;">Erreur : ${error.message}</div>`;
     }
 }
