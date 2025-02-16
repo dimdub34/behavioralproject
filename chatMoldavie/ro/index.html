@@ -13,7 +13,8 @@
 <div class="container mt-5 p-3">
     <header class="mb-3">
         <!--<img src="../img/expertgrup.svg" alt="logo" style="float: right;">-->
-        <h1 class="fs-2">Bine ai venit pe European.md <img src="../img/europe.png" style="height: 1em; border-radius: 5px">
+        <h1 class="fs-2">Bine ai venit pe European.md <img src="../img/europe.png"
+                                                           style="height: 1em; border-radius: 5px">
         </h1>
         <h2 class="fs-3 mb-3">Chatbot-ul care te ajută să fii informat corect despre integrarea europeană a Republicii
             Moldova!</h2>
@@ -34,6 +35,24 @@
             <div id="summary" class="mb-3"></div>
         </div>
     </div>
+
+    <div class="card bg-white mb-3">
+        <div class="card-body">
+            <p>
+                Sau puneți propria întrebare în căsuța de chat de mai jos. <br/>
+                <span class="fst-italic small">
+                Vă rugăm să rețineți că fiecare utilizator este limitat la două întrebări deschise.
+            </span>
+            </p>
+            <div id="chatBox"></div>
+            <input id="userInput" type="text" placeholder="Vă rugăm să puneți întrebarea dvs. ..."
+                   class="form-control mb-2">
+            <button id="sendButton" class="btn btn-secondary" type="button" onclick="sendMessage()">
+                <img src="../img/send.png">&nbsp;Trimite
+            </button>
+        </div>
+    </div>
+
     <div class="rating-container text-center mt-5 mb-5" style="display: none">
         <p>Cum ați evalua acest chatbot?</p>
         <div id="rating" class="rating">
@@ -62,7 +81,7 @@
 <script>
     const language = "ro";
 
-        document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
         ask_topic();
         config_stars();
     });
